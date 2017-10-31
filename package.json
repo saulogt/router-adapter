@@ -1,6 +1,10 @@
 {
   "name": "router-adapter",
-  "version": "0.1.0",
+  "repository": {
+    "url": "git+https://github.com/saulogt/router-adapter.git",
+    "type": "git"
+  },
+  "version": "0.1.1",
   "description": "The main goal of this package is to separate the http from the logic creating a simple link between the router and the controller",
   "main": "dist/index.js",
   "tipings": "dist/index",
