@@ -4,19 +4,25 @@
     "url": "git+https://github.com/saulogt/router-adapter.git",
     "type": "git"
   },
-  "version": "0.1.1",
-  "description": "The main goal of this package is to separate the http from the logic creating a simple link between the router and the controller",
+  "version": "0.1.2",
+  "description": "The main goal of this package is to separate the http from the logic by adding a simple link between the router and the controller",
   "main": "dist/index.js",
-  "tipings": "dist/index",
+  "typings": "dist/index.d.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "prepublish": "tsc"
-    
+  },
+  "engines": {
+    "node": "*"
   },
   "author": "Saulo Tauil",
   "license": "ISC",
+  "dependencies": {
+    "@types/express": "*",
+    "@types/node": "*"
+  },
   "devDependencies": {
-    "express": "^4.16.2",
+    "express": "*",
     "typescript": "~2.5.3"
   }
 }
