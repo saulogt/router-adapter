@@ -1,4 +1,4 @@
-import { Response } from 'express'
+import { Response, Request } from 'express'
 
 export abstract class HttpError extends Error {
     statusCode: number;
@@ -17,24 +17,21 @@ export class ErrorBadRequest extends HttpError {
     }
 }
 
-export function routerAdapter(res: Response, p: Promise<any>) {
+export type RequestHandler<T> = (req: Request) => Promise<T>
 
-    p
-        .then((v) => {
-            res.status(200).json(v)
-        }).catch((e) => {
-            if (e instanceof HttpError) {
-                return res.status(e.statusCode).json(e)
-            }
-            res.status(500).json(e)
-        })
+export function routerAdapter<T>( handler: RequestHandler<T>) {
+  return (req: Request, res: Response) => {
+    const promise = handler(req);
+
+    promise
+    .then((v) => {
+        res.status(200).json(v)
+    }).catch((e) => {
+        if (e instanceof HttpError) {
+            return res.status(e.statusCode).json(e)
+        }
+        res.status(500).json(e)
+    })
+  }
 }
 
-
-//   function controllerTest(d) {
-//     return Promise.resolve(`sdfsdfds ${d}`);
-//   }
-
-//   router.get('/test/:ddd', (req, res, next) => {
-//     routerAdapter(res, controllerTest(req.params.ddd))
-//   })
