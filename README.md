@@ -2,7 +2,21 @@
 
 This package is intend to simplify the express router list as well as separate the logic from the http handling.
 
-This:
+## Install
+
+`npm i router-adapter --save`
+
+## Usage:
+
+
+```js
+import { routerAdapter } from 'router-adapter'
+
+app.get('/my-entrypoint/:id', routerAdapter((req) => getObject(req.params.id))
+
+```
+
+Instead of this:
 
 ```js
 app.get('/my-entrypoint/:id', (req, res) => {
@@ -14,14 +28,6 @@ app.get('/my-entrypoint/:id', (req, res) => {
     res.status(500).json(e)
   })
 })
-```
-
-Becomes this:
-
-```js
-
-app.get('/my-entrypoint/:id', routerAdapter((req) => getObject(req.params.id))
-
 ```
 
 ## Requirements
