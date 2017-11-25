@@ -1,6 +1,6 @@
 # router-adapter
 
-This package is intend to simplify the express router list as well as separate the logic from the http handling.
+This package is intended to simplify the express router list as well as separate the logic from the http handling.
 
 ## Install
 
