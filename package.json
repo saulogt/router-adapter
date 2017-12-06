@@ -4,12 +4,12 @@
     "url": "git+https://github.com/saulogt/router-adapter.git",
     "type": "git"
   },
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "The main goal of this package is to separate the http from the logic by adding a simple link between the router and the controller",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "tsc -p ./test/ && mocha -- ./dist/test",
     "prepublish": "tsc"
   },
   "engines": {
@@ -22,7 +22,10 @@
     "@types/node": "*"
   },
   "devDependencies": {
+    "@types/mocha": "^2.2.44",
+    "chai": "^4.1.2",
     "express": "*",
+    "mocha": "^4.0.1",
     "typescript": "~2.5.3"
   }
 }
