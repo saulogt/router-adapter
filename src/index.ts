@@ -49,8 +49,8 @@ export function routerAdapter<T>( handler: RequestHandler<T>) {
 
 function handleError(res: Response, error: any) {
     if (error instanceof HttpError) {
-        return res.status(error.statusCode).json(error)
+        return res.status(error.statusCode).json(error.message)
     }
-    res.status(500).json(error)
+    res.status(500).json({ message: error.message, stack: error.status, obj: error})
 }
 
